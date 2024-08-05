@@ -1,7 +1,7 @@
 module.exports = grammar({
     name: 'dezyne',
 
-    extras: $ => [$.comment, prec(2, $.whiteline), /\s+/],
+    extras: $ => [$.comment, prec(10, $.whiteline), $._whitespace],
 
     word: $ => $._identifier,
 
@@ -317,6 +317,7 @@ module.exports = grammar({
             seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/'),
         ),
 
-        whiteline: $ => /\r?\n[^\r\n]*\r?\n/,
+        _whitespace: $ => /\s/,
+        whiteline: $ => seq(/\r?\n/, /[^\n]*/ ,/\r?\n/),
     }
 });
