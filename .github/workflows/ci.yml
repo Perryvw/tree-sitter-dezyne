@@ -16,6 +16,7 @@ jobs:
               with:
                   node-version: 20.16.0
             - run: npm install
+            - run: npm run generate
             - run: npm test
             - run: npm run build:wasm
             - name: Publish wasm output build artifact
