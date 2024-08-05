@@ -8,7 +8,7 @@ module.exports = grammar({
     conflicts: $ => [
         [$.compound_name, $.port_name],
         [$.compound_name],
-        [$.whiteline, $._whitespace]
+        //[$.whiteline, $._whitespace]
     ],
 
     rules: {
@@ -319,6 +319,6 @@ module.exports = grammar({
         ),
 
         _whitespace: $ => /s+/,
-        whiteline: $ => /\r?\n[^\n]*\r?\n/,
+        whiteline: $ => /\r?\n[ \t]*\r?\n/,
     }
 });
