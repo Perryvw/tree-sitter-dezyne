@@ -1,13 +1,15 @@
 module.exports = grammar({
     name: 'dezyne',
 
-    extras: $ => [$.comment, $.whiteline, /\s+/],
+    extras: $ => [$.comment, $.whiteline, $._whitespace],
+    _whitespace: $ => /\s+/,
 
     word: $ => $._identifier,
 
     conflicts: $ => [
         [$.compound_name, $.port_name],
         [$.compound_name],
+        //[$.whiteline, $._whitespace]
     ],
 
     rules: {
