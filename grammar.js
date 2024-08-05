@@ -8,7 +8,7 @@ module.exports = grammar({
     conflicts: $ => [
         [$.compound_name, $.port_name],
         [$.compound_name],
-        //[$.whiteline, $._whitespace]
+        [$.whiteline, $._whitespace]
     ],
 
     rules: {
