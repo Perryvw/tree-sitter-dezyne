@@ -1,14 +1,13 @@
 module.exports = grammar({
     name: 'dezyne',
 
-    extras: $ => [$.comment, $.whiteline, $._whitespace],
+    extras: $ => [$.comment, $.whiteline, /\s+/],
 
     word: $ => $._identifier,
 
     conflicts: $ => [
         [$.compound_name, $.port_name],
         [$.compound_name],
-        [$.whiteline, $._whitespace]
     ],
 
     rules: {
@@ -318,7 +317,6 @@ module.exports = grammar({
             seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/'),
         ),
 
-        _whitespace: $ => /\s+/,
-        whiteline: $ => /\n\s+\n/,
+        whiteline: $ => /\r?\n[^\n]+\r?\n/,
     }
 });
