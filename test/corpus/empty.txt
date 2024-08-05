@@ -12,4 +12,5 @@ File with whitespace
 
 
 ---
-(root)
+(root
+    (whiteline))
