@@ -196,6 +196,10 @@
           "named": true
         },
         {
+          "type": "invariant",
+          "named": true
+        },
+        {
           "type": "on",
           "named": true
         },
@@ -278,6 +282,10 @@
           },
           {
             "type": "==",
+            "named": false
+          },
+          {
+            "type": "=>",
             "named": false
           },
           {
@@ -410,6 +418,10 @@
           },
           {
             "type": "interface_action",
+            "named": true
+          },
+          {
+            "type": "invariant",
             "named": true
           },
           {
@@ -572,6 +584,10 @@
           },
           {
             "type": "interface_action",
+            "named": true
+          },
+          {
+            "type": "invariant",
             "named": true
           },
           {
@@ -930,11 +946,89 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
+            "type": ";",
+            "named": false
+          },
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "action",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
             "type": "compound",
+            "named": true
+          },
+          {
+            "type": "compound_name",
+            "named": true
+          },
+          {
+            "type": "dollars",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "expression": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "action",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "compound_name",
+            "named": true
+          },
+          {
+            "type": "dollars",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
             "named": true
           }
         ]
@@ -1070,6 +1164,10 @@
           },
           {
             "type": "interface_action",
+            "named": true
+          },
+          {
+            "type": "invariant",
             "named": true
           },
           {
@@ -1451,6 +1549,50 @@
     }
   },
   {
+    "type": "invariant",
+    "named": true,
+    "fields": {
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "action",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "compound_name",
+            "named": true
+          },
+          {
+            "type": "dollars",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "literal",
     "named": true,
     "fields": {},
@@ -1499,6 +1641,10 @@
         },
         {
           "type": "extern",
+          "named": true
+        },
+        {
+          "type": "function",
           "named": true
         },
         {
@@ -1566,6 +1712,10 @@
           },
           {
             "type": "interface_action",
+            "named": true
+          },
+          {
+            "type": "invariant",
             "named": true
           },
           {
@@ -1826,6 +1976,7 @@
   {
     "type": "root",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -1845,6 +1996,10 @@
         },
         {
           "type": "extern",
+          "named": true
+        },
+        {
+          "type": "function",
           "named": true
         },
         {
@@ -2220,6 +2375,10 @@
     "named": false
   },
   {
+    "type": "=>",
+    "named": false
+  },
+  {
     "type": ">",
     "named": false
   },
@@ -2325,6 +2484,10 @@
   },
   {
     "type": "interface",
+    "named": false
+  },
+  {
+    "type": "invariant",
     "named": false
   },
   {
