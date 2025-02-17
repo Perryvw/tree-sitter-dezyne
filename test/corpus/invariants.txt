@@ -1,0 +1,54 @@
+===========================
+Invariant in behaviour
+===========================
+component C {
+    behavior {
+        invariant s.A => !s.B;
+    }
+}
+---
+(root
+    (component
+        (scoped_name)
+        (body
+            (behavior
+                (behavior_body
+                    (invariant
+                        (binary_expression
+                            (compound_name
+                                (identifier)
+                                (identifier))
+                                (unary_expression
+                                    (compound_name
+                                        (identifier)
+                                        (identifier))))))))))
+
+===========================
+Invariant in guard
+===========================
+component C {
+    behavior {
+        [s.B] {
+            invariant s != State.A;
+        }
+    }
+}
+---
+(root
+    (component
+        (scoped_name)
+        (body
+            (behavior
+            (behavior_body
+                (guard
+                    (compound_name
+                        (identifier)
+                        (identifier))
+                    (compound
+                        (invariant
+                        (binary_expression
+                            (compound_name
+                            (identifier))
+                            (compound_name
+                            (identifier)
+                            (identifier)))))))))))

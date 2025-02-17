@@ -1,0 +1,46 @@
+===========================
+Global function
+===========================
+bool foo(provides IBar b) {}
+---
+(root
+    (function
+        (type_name)
+        (name)
+        (formals
+            (formal
+                (formal_direction)
+                (type_name
+                    (compound_name
+                    (identifier)))
+                (var_name)))
+        (compound)))
+
+===========================
+Global function one line
+===========================
+bool foo() = false;
+---
+(root
+    (function
+        (type_name)
+        (name)
+        (formals)
+        (literal)))
+
+===========================
+Global function in namespace
+===========================
+namespace bar {
+    bool foo() = false;
+}
+---
+(root
+    (namespace
+        (compound_name
+            (identifier))
+        (function
+            (type_name)
+            (name)
+            (formals)
+            (literal))))

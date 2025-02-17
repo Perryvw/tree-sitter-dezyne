@@ -20,6 +20,7 @@ module.exports = grammar({
             $.namespace,
             $.interface,
             $.component,
+            $.function
         ),
 
         import: $ => seq('import', field('file_name', $.file_name), ';'),
@@ -53,6 +54,7 @@ module.exports = grammar({
             $.namespace,
             $.interface,
             $.component,
+            $.function
         ),
 
         interface: $ => seq('interface', field('name', $.scoped_name), field('body', $.interface_body)),
@@ -122,7 +124,7 @@ module.exports = grammar({
             field('name', $.var_name)
         ),
 
-        formal_direction: _ => choice('in', 'out', 'inout'),
+        formal_direction: _ => choice('in', 'out', 'inout', 'provides', 'requires'),
 
         type_name: $ => choice($.compound_name, 'bool', 'void'),
 
@@ -141,14 +143,27 @@ module.exports = grammar({
             field('return_type', $.type_name), 
             field('name', $.name), 
             field('formals', $.formals), 
-            field('body', $.compound)
+            field('body', choice($.compound, $._function_body_one_line))
+        ),
+
+        _function_body_one_line: $ => seq(
+            '=',
+            field('expression', $._expression),
+            ';'
         ),
 
         _declarative_statement: $ => choice(
             $.on,
             $.blocking,
             $.guard,
+            $.invariant,
             prec(10, $.compound),
+        ),
+
+        invariant: $ => seq(
+            'invariant',
+            field('expression', $._expression),
+            ';'
         ),
 
         on: $ => seq('on', field('triggers', $.triggers), ':', field('body', $._statement)),
@@ -288,6 +303,7 @@ module.exports = grammar({
             prec.left(seq(field('left', $._expression), field('operator', '>'), field('right', $._expression))),
             prec.left(seq(field('left', $._expression), field('operator', '+'), field('right', $._expression))),
             prec.left(seq(field('left', $._expression), field('operator', '-'), field('right', $._expression))),
+            prec.left(seq(field('left', $._expression), field('operator', '=>'), field('right', $._expression))),
         ),
 
         compound_name: $ => seq(
