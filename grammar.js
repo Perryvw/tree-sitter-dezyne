@@ -47,7 +47,7 @@ module.exports = grammar({
 
         extern: $ => seq('extern', field('name', $.scoped_name), '$', field('value', $.dollars_content), '$', ';'),
 
-        namespace: $ => seq('namespace', field('name', $.compound_name), '{', repeat($._namespace_statement), '}'),
+        namespace: $ => seq('namespace', field('name', $.compound_name), '{', repeat(field("body_statement", $._namespace_statement)), '}'),
 
         _namespace_statement: $ => choice(
             $._type,
@@ -59,7 +59,7 @@ module.exports = grammar({
 
         interface: $ => seq('interface', field('name', $.scoped_name), field('body', $.interface_body)),
 
-        interface_body: $ => seq('{', repeat($._interface_statement), optional(field('behavior', $.behavior)), '}'),
+        interface_body: $ => seq('{', repeat(field('interface_statement', $._interface_statement)), optional(field('behavior', $.behavior)), '}'),
 
         _interface_statement: $ => choice(
             $._type,
@@ -86,7 +86,7 @@ module.exports = grammar({
 
         system: $ => seq('system', field('body', $.system_body)),
 
-        system_body: $ => seq('{', repeat($._instance_or_binding), '}'),
+        system_body: $ => seq('{', repeat(field('instance_or_binding', $._instance_or_binding)), '}'),
 
         _instance_or_binding: $ => choice($.instance, $.binding),
 
@@ -130,7 +130,7 @@ module.exports = grammar({
 
         behavior: $ => seq(choice('behavior', 'behaviour') , optional(field('name', $.name)), field('body', $.behavior_body)),
 
-        behavior_body: $ => seq('{', repeat($._behavior_statement), '}'),
+        behavior_body: $ => seq('{', repeat(field('statement', $._behavior_statement)), '}'),
 
         _behavior_statement: $ => choice(
             $.function,
