@@ -36,6 +36,30 @@
     }
   },
   {
+    "type": "action_or_call_statement",
+    "named": true,
+    "fields": {
+      "action_or_call": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "action",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "interface_action",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "arguments",
     "named": true,
     "fields": {
@@ -162,52 +186,53 @@
   {
     "type": "behavior_body",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "blocking",
-          "named": true
-        },
-        {
-          "type": "compound",
-          "named": true
-        },
-        {
-          "type": "enum",
-          "named": true
-        },
-        {
-          "type": "extern",
-          "named": true
-        },
-        {
-          "type": "function",
-          "named": true
-        },
-        {
-          "type": "guard",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "invariant",
-          "named": true
-        },
-        {
-          "type": "on",
-          "named": true
-        },
-        {
-          "type": "variable",
-          "named": true
-        }
-      ]
+    "fields": {
+      "statement": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "blocking",
+            "named": true
+          },
+          {
+            "type": "compound",
+            "named": true
+          },
+          {
+            "type": "enum",
+            "named": true
+          },
+          {
+            "type": "extern",
+            "named": true
+          },
+          {
+            "type": "function",
+            "named": true
+          },
+          {
+            "type": "guard",
+            "named": true
+          },
+          {
+            "type": "int",
+            "named": true
+          },
+          {
+            "type": "invariant",
+            "named": true
+          },
+          {
+            "type": "on",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -373,15 +398,11 @@
     "named": true,
     "fields": {
       "statement": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "action",
+            "type": "action_or_call_statement",
             "named": true
           },
           {
@@ -390,10 +411,6 @@
           },
           {
             "type": "blocking",
-            "named": true
-          },
-          {
-            "type": "call",
             "named": true
           },
           {
@@ -414,10 +431,6 @@
           },
           {
             "type": "illegal",
-            "named": true
-          },
-          {
-            "type": "interface_action",
             "named": true
           },
           {
@@ -543,11 +556,7 @@
         "required": false,
         "types": [
           {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "action",
+            "type": "action_or_call_statement",
             "named": true
           },
           {
@@ -556,10 +565,6 @@
           },
           {
             "type": "blocking",
-            "named": true
-          },
-          {
-            "type": "call",
             "named": true
           },
           {
@@ -580,10 +585,6 @@
           },
           {
             "type": "illegal",
-            "named": true
-          },
-          {
-            "type": "interface_action",
             "named": true
           },
           {
@@ -659,23 +660,15 @@
         ]
       },
       "statement": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "action",
+            "type": "action_or_call_statement",
             "named": true
           },
           {
             "type": "assign",
-            "named": true
-          },
-          {
-            "type": "call",
             "named": true
           },
           {
@@ -692,10 +685,6 @@
           },
           {
             "type": "illegal",
-            "named": true
-          },
-          {
-            "type": "interface_action",
             "named": true
           },
           {
@@ -877,6 +866,10 @@
         "required": true,
         "types": [
           {
+            "type": "member_name",
+            "named": true
+          },
+          {
             "type": "name",
             "named": true
           }
@@ -945,52 +938,12 @@
     "type": "function",
     "named": true,
     "fields": {
-      "body": {
-        "multiple": true,
-        "required": true,
+      "compound": {
+        "multiple": false,
+        "required": false,
         "types": [
           {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "=",
-            "named": false
-          },
-          {
-            "type": "action",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "call",
-            "named": true
-          },
-          {
             "type": "compound",
-            "named": true
-          },
-          {
-            "type": "compound_name",
-            "named": true
-          },
-          {
-            "type": "dollars",
-            "named": true
-          },
-          {
-            "type": "group",
-            "named": true
-          },
-          {
-            "type": "literal",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
             "named": true
           }
         ]
@@ -1000,35 +953,7 @@
         "required": false,
         "types": [
           {
-            "type": "action",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "call",
-            "named": true
-          },
-          {
-            "type": "compound_name",
-            "named": true
-          },
-          {
-            "type": "dollars",
-            "named": true
-          },
-          {
-            "type": "group",
-            "named": true
-          },
-          {
-            "type": "literal",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "function_body_one_line",
             "named": true
           }
         ]
@@ -1059,6 +984,50 @@
         "types": [
           {
             "type": "type_name",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "function_body_one_line",
+    "named": true,
+    "fields": {
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "action",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "compound_name",
+            "named": true
+          },
+          {
+            "type": "dollars",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
             "named": true
           }
         ]
@@ -1119,15 +1088,11 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "action",
+            "type": "action_or_call_statement",
             "named": true
           },
           {
@@ -1136,10 +1101,6 @@
           },
           {
             "type": "blocking",
-            "named": true
-          },
-          {
-            "type": "call",
             "named": true
           },
           {
@@ -1160,10 +1121,6 @@
           },
           {
             "type": "illegal",
-            "named": true
-          },
-          {
-            "type": "interface_action",
             "named": true
           },
           {
@@ -1241,23 +1198,15 @@
     "named": true,
     "fields": {
       "else_statement": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "action",
+            "type": "action_or_call_statement",
             "named": true
           },
           {
             "type": "assign",
-            "named": true
-          },
-          {
-            "type": "call",
             "named": true
           },
           {
@@ -1274,10 +1223,6 @@
           },
           {
             "type": "illegal",
-            "named": true
-          },
-          {
-            "type": "interface_action",
             "named": true
           },
           {
@@ -1337,23 +1282,15 @@
         ]
       },
       "statement": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "action",
+            "type": "action_or_call_statement",
             "named": true
           },
           {
             "type": "assign",
-            "named": true
-          },
-          {
-            "type": "call",
             "named": true
           },
           {
@@ -1370,10 +1307,6 @@
           },
           {
             "type": "illegal",
-            "named": true
-          },
-          {
-            "type": "interface_action",
             "named": true
           },
           {
@@ -1523,29 +1456,29 @@
             "named": true
           }
         ]
+      },
+      "interface_statement": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "enum",
+            "named": true
+          },
+          {
+            "type": "event",
+            "named": true
+          },
+          {
+            "type": "extern",
+            "named": true
+          },
+          {
+            "type": "int",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "enum",
-          "named": true
-        },
-        {
-          "type": "event",
-          "named": true
-        },
-        {
-          "type": "extern",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1616,6 +1549,40 @@
     "type": "namespace",
     "named": true,
     "fields": {
+      "body_statement": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "component",
+            "named": true
+          },
+          {
+            "type": "enum",
+            "named": true
+          },
+          {
+            "type": "extern",
+            "named": true
+          },
+          {
+            "type": "function",
+            "named": true
+          },
+          {
+            "type": "int",
+            "named": true
+          },
+          {
+            "type": "interface",
+            "named": true
+          },
+          {
+            "type": "namespace",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": true,
@@ -1626,40 +1593,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "component",
-          "named": true
-        },
-        {
-          "type": "enum",
-          "named": true
-        },
-        {
-          "type": "extern",
-          "named": true
-        },
-        {
-          "type": "function",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "interface",
-          "named": true
-        },
-        {
-          "type": "namespace",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1667,15 +1600,11 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "action",
+            "type": "action_or_call_statement",
             "named": true
           },
           {
@@ -1684,10 +1613,6 @@
           },
           {
             "type": "blocking",
-            "named": true
-          },
-          {
-            "type": "call",
             "named": true
           },
           {
@@ -1708,10 +1633,6 @@
           },
           {
             "type": "illegal",
-            "named": true
-          },
-          {
-            "type": "interface_action",
             "named": true
           },
           {
@@ -2050,20 +1971,21 @@
   {
     "type": "system_body",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "binding",
-          "named": true
-        },
-        {
-          "type": "instance",
-          "named": true
-        }
-      ]
+    "fields": {
+      "instance_or_binding": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "binding",
+            "named": true
+          },
+          {
+            "type": "instance",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -2489,6 +2411,10 @@
   {
     "type": "invariant",
     "named": false
+  },
+  {
+    "type": "member_name",
+    "named": true
   },
   {
     "type": "namespace",

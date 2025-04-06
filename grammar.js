@@ -39,7 +39,7 @@ module.exports = grammar({
 
         enum: $ => seq('enum', field('name', $.scoped_name), field('fields', $.fields), ';'),
 
-        fields: $ => seq('{', field('name', $.name), repeat(seq(',', field('name', $.name))), optional(','), '}'),
+        fields: $ => seq('{', field('name', $.name), repeat(seq(',', field('name', $.member_name))), optional(','), '}'),
 
         int: $ => seq('subint', field('name', $.scoped_name), '{', $._range, '}', ';'),
 
@@ -143,10 +143,10 @@ module.exports = grammar({
             field('return_type', $.type_name), 
             field('name', $.name), 
             field('formals', $.formals), 
-            field('body', choice($.compound, $._function_body_one_line))
+            field('body', choice(field('compound', $.compound), field('expression', $.function_body_one_line)))
         ),
 
-        _function_body_one_line: $ => seq(
+        function_body_one_line: $ => seq(
             '=',
             field('expression', $._expression),
             ';'
@@ -229,15 +229,15 @@ module.exports = grammar({
             $.compound,
             $.reply,
             $.defer,
-            $._action_or_call,
-            seq($.interface_action, ';'),
+            $.action_or_call_statement
         ),
+
 
         defer: $ => seq('defer', optional(field('arguments', $.arguments)), field('statement', $._imperative_statement)),
 
         interface_action: $ => $._identifier,
 
-        _action_or_call: $ => seq(choice($.action, $.call), ';'),
+        action_or_call_statement: $ => seq(field('action_or_call', choice($.action, $.call, $.interface_action)), ';'),
 
         action: $ => seq(field('port_name', $.port_name), '.', field('name', $.name), field('arguments', $.arguments)),
 
@@ -317,6 +317,7 @@ module.exports = grammar({
         global: $ => '.',
 
         name: $ => $._identifier,
+        member_name: $ => /[a-zA-Z0-9_]+/,
 
         var: $ => $._identifier,
 
