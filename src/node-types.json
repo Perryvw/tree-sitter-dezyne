@@ -112,7 +112,7 @@
         "required": true,
         "types": [
           {
-            "type": "var",
+            "type": "name",
             "named": true
           }
         ]
@@ -1897,7 +1897,6 @@
   {
     "type": "root",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -2024,7 +2023,7 @@
       "required": true,
       "types": [
         {
-          "type": "var",
+          "type": "name",
           "named": true
         }
       ]
@@ -2133,11 +2132,6 @@
         ]
       }
     }
-  },
-  {
-    "type": "var",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "var_name",

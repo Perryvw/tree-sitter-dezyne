@@ -190,7 +190,7 @@ module.exports = grammar({
 
         trigger_formals: $ => seq('(', optional(seq($.trigger_formal, repeat(seq(',', $.trigger_formal)))), ')'),
 
-        trigger_formal: $ => seq($.var, optional(seq('<-', $.var))),
+        trigger_formal: $ => seq($.name, optional(seq('<-', $.name))),
 
         guard: $ => seq('[', $._otherwise_or_expression, ']', field('body', $._statement)),
 
@@ -258,7 +258,7 @@ module.exports = grammar({
 
         illegal: $ => seq('illegal', ';'),
 
-        assign: $ => seq(field('left', $.var), '=', field('right', $._expression), ';'),
+        assign: $ => seq(field('left', $.name), '=', field('right', $._expression), ';'),
 
         if_statement: $ => prec.left(seq(
             'if', 
@@ -318,8 +318,6 @@ module.exports = grammar({
 
         name: $ => $._identifier,
         member_name: $ => /[a-zA-Z0-9_]+/,
-
-        var: $ => $._identifier,
 
         port_name: $ => $._identifier,
 

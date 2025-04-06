@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "dezyne",
   "word": "_identifier",
   "rules": {
@@ -1334,7 +1333,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "var"
+          "name": "name"
         },
         {
           "type": "CHOICE",
@@ -1348,7 +1347,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "var"
+                  "name": "name"
                 }
               ]
             },
@@ -1766,7 +1765,7 @@
           "name": "left",
           "content": {
             "type": "SYMBOL",
-            "name": "var"
+            "name": "name"
           }
         },
         {
@@ -2502,10 +2501,6 @@
       "type": "PATTERN",
       "value": "[a-zA-Z0-9_]+"
     },
-    "var": {
-      "type": "SYMBOL",
-      "name": "_identifier"
-    },
     "port_name": {
       "type": "SYMBOL",
       "name": "_identifier"
@@ -2580,6 +2575,5 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": [],
-  "reserved": {}
+  "supertypes": []
 }
