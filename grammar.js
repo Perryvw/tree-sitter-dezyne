@@ -188,9 +188,9 @@ module.exports = grammar({
 
         inevitable: $ => 'inevitable',
 
-        trigger_formals: $ => seq('(', optional(seq($.trigger_formal, repeat(seq(',', $.trigger_formal)))), ')'),
+        trigger_formals: $ => seq('(', optional(seq(field('trigger_formal', $.trigger_formal), repeat(seq(',', field('trigger_formal', $.trigger_formal))))), ')'),
 
-        trigger_formal: $ => seq($.name, optional(seq('<-', $.name))),
+        trigger_formal: $ => seq(field('name', $.name), optional(seq('<-', field('assign_name', $.name)))),
 
         guard: $ => seq('[', $._otherwise_or_expression, ']', field('body', $._statement)),
 

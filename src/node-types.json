@@ -2017,31 +2017,43 @@
   {
     "type": "trigger_formal",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "name",
-          "named": true
-        }
-      ]
+    "fields": {
+      "assign_name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "name",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "name",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
     "type": "trigger_formals",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "trigger_formal",
-          "named": true
-        }
-      ]
+    "fields": {
+      "trigger_formal": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "trigger_formal",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
