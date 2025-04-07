@@ -232,7 +232,6 @@ module.exports = grammar({
             $.action_or_call_statement
         ),
 
-
         defer: $ => seq('defer', optional(field('arguments', $.arguments)), field('statement', $._imperative_statement)),
 
         interface_action: $ => $._identifier,
@@ -267,7 +266,7 @@ module.exports = grammar({
             optional(seq('else', field('else_statement', $._imperative_statement))))
         ),
 
-        reply: $ => seq(optional(seq(field('port', $.port_name), '.')), 'reply', '(', field('expression', $._expression), ')', ';'),
+        reply: $ => seq(optional(seq(field('port', $.port_name), '.')), 'reply', '(', optional(field('expression', $._expression)), ')', ';'),
 
         return: $ => seq('return', optional(field('expression', $._expression)), ';'),
 

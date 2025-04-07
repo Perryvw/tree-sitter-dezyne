@@ -1,0 +1,29 @@
+===========================
+Basic on statement with parameters
+===========================
+component C {
+    behavior {
+        on port.func(abc, def): {
+
+        }
+    }
+}
+---
+(root
+    (component
+        (scoped_name)
+        (body
+            (behavior
+                (behavior_body
+                (on
+                    (triggers
+                        (trigger
+                            (port_event
+                                (port_name)
+                                (name)
+                            (trigger_formals
+                                (trigger_formal
+                                    (name))
+                                (trigger_formal
+                                    (name))))))
+                    (compound)))))))
