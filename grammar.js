@@ -126,7 +126,7 @@ module.exports = grammar({
 
         formal_direction: _ => choice('in', 'out', 'inout', 'provides', 'requires'),
 
-        type_name: $ => choice($.compound_name, 'bool', 'void'),
+        type_name: $ => choice(field('name', $.compound_name), 'bool', 'void'),
 
         behavior: $ => seq(choice('behavior', 'behaviour') , optional(field('name', $.name)), field('body', $.behavior_body)),
 
