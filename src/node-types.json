@@ -1735,42 +1735,6 @@
     "fields": {}
   },
   {
-    "type": "port_event",
-    "named": true,
-    "fields": {
-      "formals": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "trigger_formals",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "name",
-            "named": true
-          }
-        ]
-      },
-      "port": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "port_name",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "port_name",
     "named": true,
     "fields": {}
@@ -1990,25 +1954,38 @@
   {
     "type": "trigger",
     "named": true,
-    "fields": {},
+    "fields": {
+      "formals": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "trigger_formals",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "compound_name",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
-        {
-          "type": "event_name",
-          "named": true
-        },
         {
           "type": "inevitable",
           "named": true
         },
         {
           "type": "optional",
-          "named": true
-        },
-        {
-          "type": "port_event",
           "named": true
         }
       ]

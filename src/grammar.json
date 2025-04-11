@@ -1225,56 +1225,44 @@
       ]
     },
     "trigger": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "port_event"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "optional"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "inevitable"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "event_name"
-        }
-      ]
-    },
-    "port_event": {
       "type": "SEQ",
       "members": [
         {
-          "type": "FIELD",
-          "name": "port",
-          "content": {
-            "type": "SYMBOL",
-            "name": "port_name"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "optional"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "inevitable"
+            },
+            {
+              "type": "FIELD",
+              "name": "name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "compound_name"
+              }
+            }
+          ]
         },
         {
-          "type": "STRING",
-          "value": "."
-        },
-        {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "name"
-          }
-        },
-        {
-          "type": "FIELD",
-          "name": "formals",
-          "content": {
-            "type": "SYMBOL",
-            "name": "trigger_formals"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "formals",
+              "content": {
+                "type": "SYMBOL",
+                "name": "trigger_formals"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

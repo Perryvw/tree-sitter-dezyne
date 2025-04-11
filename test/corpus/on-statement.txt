@@ -1,4 +1,54 @@
 ===========================
+Simple component with on
+===========================
+component A {
+    behavior {
+        on i.e: {}
+    }
+}
+---
+(root
+    (component
+        (scoped_name)
+        (body
+            (behavior
+                (behavior_body
+                    (on
+                        (triggers
+                            (trigger
+                                (compound_name
+                                    (identifier)
+                                    (identifier))))
+                        (compound)))))))
+
+===========================
+Simple component with optional inevitable
+===========================
+component A {
+    behavior {
+        on optional: {}
+        on inevitable: {}
+    }
+}
+---
+(root
+    (component
+        (scoped_name)
+        (body
+            (behavior
+                (behavior_body
+                    (on
+                        (triggers
+                            (trigger
+                                (optional)))
+                        (compound))
+                    (on
+                        (triggers
+                            (trigger
+                                (inevitable)))
+                        (compound)))))))
+
+===========================
 Basic on statement with parameters
 ===========================
 component C {
@@ -18,12 +68,12 @@ component C {
                 (on
                     (triggers
                         (trigger
-                            (port_event
-                                (port_name)
-                                (name)
+                            (compound_name
+                                (identifier)
+                                (identifier))
                             (trigger_formals
                                 (trigger_formal
                                     (name))
                                 (trigger_formal
-                                    (name))))))
+                                    (name)))))
                     (compound)))))))

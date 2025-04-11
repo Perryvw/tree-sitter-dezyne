@@ -170,18 +170,9 @@ module.exports = grammar({
 
         triggers: $ => seq(field('trigger', $.trigger), repeat(seq(',', field('trigger', $.trigger)))),
 
-        trigger: $ => choice(
-            $.port_event,
-            $.optional,
-            $.inevitable,
-            $.event_name, // interface event
-        ),
-
-        port_event: $ => seq(
-            field('port', $.port_name), 
-            '.', 
-            field('name', $.name), 
-            field('formals', $.trigger_formals)
+        trigger: $ => seq(
+            choice($.optional, $.inevitable, field('name', $.compound_name)),
+            optional(field('formals', $.trigger_formals))
         ),
 
         optional: $ => 'optional',
