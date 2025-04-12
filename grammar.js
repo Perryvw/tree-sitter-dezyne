@@ -215,6 +215,7 @@ module.exports = grammar({
             $.assign,
             $.if_statement,
             $.illegal,
+            $.interface_action_statement,
             $.return,
             $.skip_statement,
             $.compound,
@@ -223,6 +224,8 @@ module.exports = grammar({
         ),
 
         defer: $ => seq('defer', optional(field('arguments', $.arguments)), field('statement', $._imperative_statement)),
+
+        interface_action_statement: $ => seq(field('name', $.interface_action), ';'),
 
         interface_action: $ => $._identifier,
 
