@@ -1756,7 +1756,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "_if_keyword"
+            "name": "if_keyword"
           },
           {
             "type": "STRING",
@@ -1810,7 +1810,7 @@
         ]
       }
     },
-    "_if_keyword": {
+    "if_keyword": {
       "type": "PATTERN",
       "value": "if[\\s\\(]"
     },

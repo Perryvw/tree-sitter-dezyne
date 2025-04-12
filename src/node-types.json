@@ -1243,6 +1243,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "if_keyword",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2240,6 +2250,10 @@
   },
   {
     "type": "file_name",
+    "named": true
+  },
+  {
+    "type": "if_keyword",
     "named": true
   },
   {

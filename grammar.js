@@ -248,12 +248,12 @@ module.exports = grammar({
         assign: $ => seq(field('left', $.name), '=', field('right', $._expression), ';'),
 
         if_statement: $ => prec.left(seq(
-            $._if_keyword, 
+            $.if_keyword, 
             '(', field('expression', $._expression), ')', 
             field('statement', $._imperative_statement), 
             optional(seq('else', field('else_statement', $._imperative_statement)))
         )),
-        _if_keyword: $ => /if[\s\(]/,
+        if_keyword: $ => /if[\s\(]/,
 
         reply: $ => seq(optional(seq(field('port', $.name), '.')), 'reply', '(', optional(field('expression', $._expression)), ')', ';'),
 
