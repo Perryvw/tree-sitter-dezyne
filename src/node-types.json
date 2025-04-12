@@ -1,65 +1,5 @@
 [
   {
-    "type": "action",
-    "named": true,
-    "fields": {
-      "arguments": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "arguments",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "port_name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "action_or_call_statement",
-    "named": true,
-    "fields": {
-      "action_or_call": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "action",
-            "named": true
-          },
-          {
-            "type": "call",
-            "named": true
-          },
-          {
-            "type": "interface_action",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "arguments",
     "named": true,
     "fields": {
@@ -67,10 +7,6 @@
         "multiple": true,
         "required": false,
         "types": [
-          {
-            "type": "action",
-            "named": true
-          },
           {
             "type": "binary_expression",
             "named": true
@@ -121,10 +57,6 @@
         "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "action",
-            "named": true
-          },
           {
             "type": "binary_expression",
             "named": true
@@ -244,10 +176,6 @@
         "required": true,
         "types": [
           {
-            "type": "action",
-            "named": true
-          },
-          {
             "type": "binary_expression",
             "named": true
           },
@@ -332,10 +260,6 @@
         "required": true,
         "types": [
           {
-            "type": "action",
-            "named": true
-          },
-          {
             "type": "binary_expression",
             "named": true
           },
@@ -402,15 +326,15 @@
         "required": true,
         "types": [
           {
-            "type": "action_or_call_statement",
-            "named": true
-          },
-          {
             "type": "assign",
             "named": true
           },
           {
             "type": "blocking",
+            "named": true
+          },
+          {
+            "type": "call_statement",
             "named": true
           },
           {
@@ -499,7 +423,23 @@
         "required": true,
         "types": [
           {
-            "type": "name",
+            "type": "compound_name",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "call_statement",
+    "named": true,
+    "fields": {
+      "call": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "call",
             "named": true
           }
         ]
@@ -556,15 +496,15 @@
         "required": false,
         "types": [
           {
-            "type": "action_or_call_statement",
-            "named": true
-          },
-          {
             "type": "assign",
             "named": true
           },
           {
             "type": "blocking",
+            "named": true
+          },
+          {
+            "type": "call_statement",
             "named": true
           },
           {
@@ -624,8 +564,8 @@
         "required": false,
         "types": [
           {
-            "type": "global",
-            "named": true
+            "type": ".",
+            "named": false
           }
         ]
       },
@@ -633,10 +573,6 @@
         "multiple": true,
         "required": true,
         "types": [
-          {
-            "type": ".",
-            "named": false
-          },
           {
             "type": "identifier",
             "named": true
@@ -664,11 +600,11 @@
         "required": true,
         "types": [
           {
-            "type": "action_or_call_statement",
+            "type": "assign",
             "named": true
           },
           {
-            "type": "assign",
+            "type": "call_statement",
             "named": true
           },
           {
@@ -995,10 +931,6 @@
         "required": true,
         "types": [
           {
-            "type": "action",
-            "named": true
-          },
-          {
             "type": "binary_expression",
             "named": true
           },
@@ -1031,11 +963,6 @@
     }
   },
   {
-    "type": "global",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "group",
     "named": true,
     "fields": {
@@ -1043,10 +970,6 @@
         "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "action",
-            "named": true
-          },
           {
             "type": "binary_expression",
             "named": true
@@ -1088,15 +1011,15 @@
         "required": true,
         "types": [
           {
-            "type": "action_or_call_statement",
-            "named": true
-          },
-          {
             "type": "assign",
             "named": true
           },
           {
             "type": "blocking",
+            "named": true
+          },
+          {
+            "type": "call_statement",
             "named": true
           },
           {
@@ -1150,10 +1073,6 @@
         "required": true,
         "types": [
           {
-            "type": "action",
-            "named": true
-          },
-          {
             "type": "binary_expression",
             "named": true
           },
@@ -1203,11 +1122,11 @@
         "required": false,
         "types": [
           {
-            "type": "action_or_call_statement",
+            "type": "assign",
             "named": true
           },
           {
-            "type": "assign",
+            "type": "call_statement",
             "named": true
           },
           {
@@ -1249,10 +1168,6 @@
         "required": true,
         "types": [
           {
-            "type": "action",
-            "named": true
-          },
-          {
             "type": "binary_expression",
             "named": true
           },
@@ -1287,11 +1202,11 @@
         "required": true,
         "types": [
           {
-            "type": "action_or_call_statement",
+            "type": "assign",
             "named": true
           },
           {
-            "type": "assign",
+            "type": "call_statement",
             "named": true
           },
           {
@@ -1440,11 +1355,6 @@
     }
   },
   {
-    "type": "interface_action",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "interface_body",
     "named": true,
     "fields": {
@@ -1490,10 +1400,6 @@
         "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "action",
-            "named": true
-          },
           {
             "type": "binary_expression",
             "named": true
@@ -1605,15 +1511,15 @@
         "required": true,
         "types": [
           {
-            "type": "action_or_call_statement",
-            "named": true
-          },
-          {
             "type": "assign",
             "named": true
           },
           {
             "type": "blocking",
+            "named": true
+          },
+          {
+            "type": "call_statement",
             "named": true
           },
           {
@@ -1765,10 +1671,6 @@
         "required": false,
         "types": [
           {
-            "type": "action",
-            "named": true
-          },
-          {
             "type": "binary_expression",
             "named": true
           },
@@ -1818,10 +1720,6 @@
         "multiple": false,
         "required": false,
         "types": [
-          {
-            "type": "action",
-            "named": true
-          },
           {
             "type": "binary_expression",
             "named": true
@@ -2070,10 +1968,6 @@
         "required": true,
         "types": [
           {
-            "type": "action",
-            "named": true
-          },
-          {
             "type": "binary_expression",
             "named": true
           },
@@ -2132,10 +2026,6 @@
         "multiple": false,
         "required": false,
         "types": [
-          {
-            "type": "action",
-            "named": true
-          },
           {
             "type": "binary_expression",
             "named": true
@@ -2351,10 +2241,6 @@
   {
     "type": "file_name",
     "named": true
-  },
-  {
-    "type": "if",
-    "named": false
   },
   {
     "type": "illegal",

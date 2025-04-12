@@ -210,6 +210,7 @@ module.exports = grammar({
         ),
 
         _imperative_statement: $ => choice(
+            $.call_statement,
             $.variable,
             $.assign,
             $.if_statement,
@@ -219,18 +220,15 @@ module.exports = grammar({
             $.compound,
             $.reply,
             $.defer,
-            $.action_or_call_statement
         ),
 
         defer: $ => seq('defer', optional(field('arguments', $.arguments)), field('statement', $._imperative_statement)),
 
         interface_action: $ => $._identifier,
 
-        action_or_call_statement: $ => seq(field('action_or_call', choice($.action, $.call, $.interface_action)), ';'),
+        call_statement: $ => seq(field('call', $.call), ';'),
 
-        action: $ => seq(field('port_name', alias($.name, $.identifier)), '.', field('name', alias($.name, $.identifier)), field('arguments', $.arguments)),
-
-        call: $ => seq(field('name', $.name), field('arguments', $.arguments)),
+        call: $ => seq(field('name', $.compound_name), field('arguments', $.arguments)),
 
         arguments: $ => seq(
             '(',
@@ -250,11 +248,12 @@ module.exports = grammar({
         assign: $ => seq(field('left', $.name), '=', field('right', $._expression), ';'),
 
         if_statement: $ => prec.left(seq(
-            'if', 
+            $._if_keyword, 
             '(', field('expression', $._expression), ')', 
             field('statement', $._imperative_statement), 
-            optional(seq('else', field('else_statement', $._imperative_statement))))
-        ),
+            optional(seq('else', field('else_statement', $._imperative_statement)))
+        )),
+        _if_keyword: $ => /if[\s\(]/,
 
         reply: $ => seq(optional(seq(field('port', $.name), '.')), 'reply', '(', optional(field('expression', $._expression)), ')', ';'),
 
@@ -267,7 +266,6 @@ module.exports = grammar({
             $.literal,
             $.compound_name,
             $.call,
-            $.action,
             // $.interface_action (covered by $.compound_name)
             $.binary_expression,
         ),
@@ -296,14 +294,12 @@ module.exports = grammar({
         ),
 
         compound_name: $ => seq(
-            optional(field('global', $.global)),
+            optional(field('global', '.')),
             seq(
                 field('part', alias($.name, $.identifier)), 
-                repeat(field('part', seq('.', alias($.member_name, $.identifier))))
+                repeat(seq('.', field('part', alias($.member_name, $.identifier))))
             )
         ),
-
-        global: $ => '.',
 
         name: $ => $._identifier,
         member_name: $ => /[a-zA-Z0-9_]+/,
