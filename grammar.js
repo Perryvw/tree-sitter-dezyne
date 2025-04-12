@@ -10,7 +10,7 @@ module.exports = grammar({
     ],
 
     rules: {
-        root: $ => repeat($._root_statement),
+        root: $ => repeat(field("statement", $._root_statement)),
 
         _root_statement: $ => choice(
             $.import,
@@ -78,10 +78,10 @@ module.exports = grammar({
         component: $ => seq(
             'component', 
             field('name', $.scoped_name), 
-            '{', repeat(field('port', $.port)), optional(field('body', $.body)), '}'
+            '{', repeat(field('port', $.port)), optional(field('body', $._body)), '}'
         ),
 
-        body: $ => choice($.behavior, $.system),
+        _body: $ => choice($.behavior, $.system),
 
         system: $ => seq('system', field('body', $.system_body)),
 
@@ -170,7 +170,11 @@ module.exports = grammar({
         triggers: $ => seq(field('trigger', $.trigger), repeat(seq(',', field('trigger', $.trigger)))),
 
         trigger: $ => seq(
-            choice($.optional, $.inevitable, field('name', $.compound_name)),
+            choice(
+                field('optional', $.optional),
+                field('inevitable', $.inevitable),
+                field('name', $.compound_name),
+            ),
             optional(field('formals', $.trigger_formals))
         ),
 

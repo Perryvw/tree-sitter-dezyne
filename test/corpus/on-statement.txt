@@ -10,16 +10,15 @@ component A {
 (root
     (component
         (scoped_name)
-        (body
-            (behavior
-                (behavior_body
-                    (on
-                        (triggers
-                            (trigger
-                                (compound_name
-                                    (identifier)
-                                    (identifier))))
-                        (compound)))))))
+        (behavior
+            (behavior_body
+                (on
+                    (triggers
+                        (trigger
+                            (compound_name
+                                (identifier)
+                                (identifier))))
+                    (compound))))))
 
 ===========================
 Simple component with optional inevitable
@@ -34,19 +33,18 @@ component A {
 (root
     (component
         (scoped_name)
-        (body
-            (behavior
-                (behavior_body
-                    (on
-                        (triggers
-                            (trigger
-                                (optional)))
-                        (compound))
-                    (on
-                        (triggers
-                            (trigger
-                                (inevitable)))
-                        (compound)))))))
+        (behavior
+            (behavior_body
+                (on
+                    (triggers
+                        (trigger
+                            (optional)))
+                    (compound))
+                (on
+                    (triggers
+                        (trigger
+                            (inevitable)))
+                    (compound))))))
 
 ===========================
 Basic on statement with parameters
@@ -62,18 +60,17 @@ component C {
 (root
     (component
         (scoped_name)
-        (body
-            (behavior
-                (behavior_body
-                (on
-                    (triggers
-                        (trigger
-                            (compound_name
-                                (identifier)
-                                (identifier))
-                            (trigger_formals
-                                (trigger_formal
-                                    (name))
-                                (trigger_formal
-                                    (name)))))
-                    (compound)))))))
+        (behavior
+            (behavior_body
+            (on
+                (triggers
+                    (trigger
+                        (compound_name
+                            (identifier)
+                            (identifier))
+                        (trigger_formals
+                            (trigger_formal
+                                (name))
+                            (trigger_formal
+                                (name)))))
+                (compound))))))

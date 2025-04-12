@@ -14,23 +14,22 @@ component A {
     (component
         (scoped_name)
         (port
-          (port_direction)
-          (compound_name
-            (identifier))
-          (name))
-        (body
-            (behavior
-                (behavior_body
-                    (on
-                        (triggers
-                            (trigger
+            (port_direction)
+            (compound_name
+                (identifier))
+            (name))
+        (behavior
+            (behavior_body
+                (on
+                    (triggers
+                        (trigger
+                            (compound_name
+                                (identifier)
+                                (identifier))))
+                    (compound
+                        (call_statement
+                            (call
                                 (compound_name
                                     (identifier)
-                                    (identifier))))
-                        (compound
-                            (call_statement
-                                (call
-                                    (compound_name
-                                        (identifier)
-                                        (identifier))
-                                    (arguments))))))))))
+                                    (identifier))
+                                (arguments)))))))))

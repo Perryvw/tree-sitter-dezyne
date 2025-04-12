@@ -390,25 +390,6 @@
     }
   },
   {
-    "type": "body",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "behavior",
-          "named": true
-        },
-        {
-          "type": "system",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "call",
     "named": true,
     "fields": {
@@ -464,7 +445,11 @@
         "required": false,
         "types": [
           {
-            "type": "body",
+            "type": "behavior",
+            "named": true
+          },
+          {
+            "type": "system",
             "named": true
           }
         ]
@@ -1814,48 +1799,49 @@
   {
     "type": "root",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "component",
-          "named": true
-        },
-        {
-          "type": "dollars",
-          "named": true
-        },
-        {
-          "type": "enum",
-          "named": true
-        },
-        {
-          "type": "extern",
-          "named": true
-        },
-        {
-          "type": "function",
-          "named": true
-        },
-        {
-          "type": "import",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "interface",
-          "named": true
-        },
-        {
-          "type": "namespace",
-          "named": true
-        }
-      ]
+    "fields": {
+      "statement": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "component",
+            "named": true
+          },
+          {
+            "type": "dollars",
+            "named": true
+          },
+          {
+            "type": "enum",
+            "named": true
+          },
+          {
+            "type": "extern",
+            "named": true
+          },
+          {
+            "type": "function",
+            "named": true
+          },
+          {
+            "type": "import",
+            "named": true
+          },
+          {
+            "type": "int",
+            "named": true
+          },
+          {
+            "type": "interface",
+            "named": true
+          },
+          {
+            "type": "namespace",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1918,6 +1904,16 @@
           }
         ]
       },
+      "inevitable": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "inevitable",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": false,
@@ -1927,21 +1923,17 @@
             "named": true
           }
         ]
+      },
+      "optional": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "optional",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "inevitable",
-          "named": true
-        },
-        {
-          "type": "optional",
-          "named": true
-        }
-      ]
     }
   },
   {

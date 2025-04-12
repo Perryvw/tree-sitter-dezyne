@@ -5,8 +5,12 @@
     "root": {
       "type": "REPEAT",
       "content": {
-        "type": "SYMBOL",
-        "name": "_root_statement"
+        "type": "FIELD",
+        "name": "statement",
+        "content": {
+          "type": "SYMBOL",
+          "name": "_root_statement"
+        }
       }
     },
     "_root_statement": {
@@ -517,7 +521,7 @@
               "name": "body",
               "content": {
                 "type": "SYMBOL",
-                "name": "body"
+                "name": "_body"
               }
             },
             {
@@ -531,7 +535,7 @@
         }
       ]
     },
-    "body": {
+    "_body": {
       "type": "CHOICE",
       "members": [
         {
@@ -1231,12 +1235,20 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "optional"
+              "type": "FIELD",
+              "name": "optional",
+              "content": {
+                "type": "SYMBOL",
+                "name": "optional"
+              }
             },
             {
-              "type": "SYMBOL",
-              "name": "inevitable"
+              "type": "FIELD",
+              "name": "inevitable",
+              "content": {
+                "type": "SYMBOL",
+                "name": "inevitable"
+              }
             },
             {
               "type": "FIELD",

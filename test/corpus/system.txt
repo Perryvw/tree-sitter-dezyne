@@ -12,23 +12,22 @@ component S {
 (root
     (component
         (scoped_name)
-        (body
-            (system
-                (system_body
-                    (instance
+        (system
+            (system_body
+                (instance
+                    (compound_name
+                        (identifier))
+                    (name))
+                (instance
+                    (compound_name
+                        (identifier))
+                    (name))
+                (binding
+                    (end_point
                         (compound_name
-                            (identifier))
-                        (name))
-                    (instance
+                            (identifier)
+                            (identifier)))
+                    (end_point
                         (compound_name
-                            (identifier))
-                        (name))
-                    (binding
-                        (end_point
-                            (compound_name
-                                (identifier)
-                                (identifier)))
-                        (end_point
-                            (compound_name
-                                (identifier)
-                                (identifier)))))))))
+                            (identifier)
+                            (identifier))))))))

@@ -11,20 +11,19 @@ component A {
 (root
     (component
         (scoped_name)
-        (body
-            (behavior
-                (behavior_body
-                    (enum
-                        (scoped_name)
-                        (fields
-                            (member_name)
-                            (member_name)
-                            (member_name)))
-                    (variable
-                        (type_name
-                            (compound_name
-                                (identifier)))
-                        (var_name)
+        (behavior
+            (behavior_body
+                (enum
+                    (scoped_name)
+                    (fields
+                        (member_name)
+                        (member_name)
+                        (member_name)))
+                (variable
+                    (type_name
                         (compound_name
-                            (identifier)
-                            (identifier))))))))
+                            (identifier)))
+                    (var_name)
+                    (compound_name
+                        (identifier)
+                        (identifier)))))))
