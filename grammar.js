@@ -6,7 +6,6 @@ module.exports = grammar({
     word: $ => $._identifier,
 
     conflicts: $ => [
-        [$.compound_name, $.port_name],
         [$.compound_name],
     ],
 
@@ -39,7 +38,7 @@ module.exports = grammar({
 
         enum: $ => seq('enum', field('name', $.scoped_name), field('fields', $.fields), ';'),
 
-        fields: $ => seq('{', field('name', $.name), repeat(seq(',', field('name', $.member_name))), optional(','), '}'),
+        fields: $ => seq('{', field('name', $.member_name), repeat(seq(',', field('name', $.member_name))), optional(','), '}'),
 
         int: $ => seq('subint', field('name', $.scoped_name), '{', $._range, '}', ';'),
 
@@ -106,7 +105,7 @@ module.exports = grammar({
             optional(field('qualifiers', $.port_qualifiers)), 
             field('type', $.compound_name), 
             optional(field('formals', $.formals)), 
-            field('name', $.port_name), 
+            field('name', $.name), 
             ';'
         ),
 
@@ -229,7 +228,7 @@ module.exports = grammar({
 
         action_or_call_statement: $ => seq(field('action_or_call', choice($.action, $.call, $.interface_action)), ';'),
 
-        action: $ => seq(field('port_name', $.port_name), '.', field('name', $.name), field('arguments', $.arguments)),
+        action: $ => seq(field('port_name', alias($.name, $.identifier)), '.', field('name', alias($.name, $.identifier)), field('arguments', $.arguments)),
 
         call: $ => seq(field('name', $.name), field('arguments', $.arguments)),
 
@@ -257,7 +256,7 @@ module.exports = grammar({
             optional(seq('else', field('else_statement', $._imperative_statement))))
         ),
 
-        reply: $ => seq(optional(seq(field('port', $.port_name), '.')), 'reply', '(', optional(field('expression', $._expression)), ')', ';'),
+        reply: $ => seq(optional(seq(field('port', $.name), '.')), 'reply', '(', optional(field('expression', $._expression)), ')', ';'),
 
         return: $ => seq('return', optional(field('expression', $._expression)), ';'),
 
@@ -299,8 +298,8 @@ module.exports = grammar({
         compound_name: $ => seq(
             optional(field('global', $.global)),
             seq(
-                field('part', alias($._identifier, $.identifier)), 
-                repeat(field('part', seq('.', alias($._identifier, $.identifier))))
+                field('part', alias($.name, $.identifier)), 
+                repeat(field('part', seq('.', alias($.member_name, $.identifier))))
             )
         ),
 
@@ -308,8 +307,6 @@ module.exports = grammar({
 
         name: $ => $._identifier,
         member_name: $ => /[a-zA-Z0-9_]+/,
-
-        port_name: $ => $._identifier,
 
         scoped_name: $ => $._identifier,
 

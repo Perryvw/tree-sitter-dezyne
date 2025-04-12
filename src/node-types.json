@@ -18,7 +18,7 @@
         "required": true,
         "types": [
           {
-            "type": "name",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -28,7 +28,7 @@
         "required": true,
         "types": [
           {
-            "type": "port_name",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -868,10 +868,6 @@
           {
             "type": "member_name",
             "named": true
-          },
-          {
-            "type": "name",
-            "named": true
           }
         ]
       }
@@ -1192,6 +1188,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "if_statement",
@@ -1702,7 +1703,7 @@
         "required": true,
         "types": [
           {
-            "type": "port_name",
+            "type": "name",
             "named": true
           }
         ]
@@ -1731,11 +1732,6 @@
   },
   {
     "type": "port_direction",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "port_name",
     "named": true,
     "fields": {}
   },
@@ -1807,7 +1803,7 @@
         "required": false,
         "types": [
           {
-            "type": "port_name",
+            "type": "name",
             "named": true
           }
         ]
@@ -2354,10 +2350,6 @@
   },
   {
     "type": "file_name",
-    "named": true
-  },
-  {
-    "type": "identifier",
     "named": true
   },
   {

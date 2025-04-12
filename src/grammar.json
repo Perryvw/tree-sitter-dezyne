@@ -150,7 +150,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "name"
+            "name": "member_name"
           }
         },
         {
@@ -763,7 +763,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "port_name"
+            "name": "name"
           }
         },
         {
@@ -1630,8 +1630,13 @@
           "type": "FIELD",
           "name": "port_name",
           "content": {
-            "type": "SYMBOL",
-            "name": "port_name"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "name"
+            },
+            "named": true,
+            "value": "identifier"
           }
         },
         {
@@ -1642,8 +1647,13 @@
           "type": "FIELD",
           "name": "name",
           "content": {
-            "type": "SYMBOL",
-            "name": "name"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "name"
+            },
+            "named": true,
+            "value": "identifier"
           }
         },
         {
@@ -1870,7 +1880,7 @@
                   "name": "port",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "port_name"
+                    "name": "name"
                   }
                 },
                 {
@@ -2470,7 +2480,7 @@
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "_identifier"
+                  "name": "name"
                 },
                 "named": true,
                 "value": "identifier"
@@ -2492,7 +2502,7 @@
                       "type": "ALIAS",
                       "content": {
                         "type": "SYMBOL",
-                        "name": "_identifier"
+                        "name": "member_name"
                       },
                       "named": true,
                       "value": "identifier"
@@ -2516,10 +2526,6 @@
     "member_name": {
       "type": "PATTERN",
       "value": "[a-zA-Z0-9_]+"
-    },
-    "port_name": {
-      "type": "SYMBOL",
-      "name": "_identifier"
     },
     "scoped_name": {
       "type": "SYMBOL",
@@ -2580,10 +2586,6 @@
     }
   ],
   "conflicts": [
-    [
-      "compound_name",
-      "port_name"
-    ],
     [
       "compound_name"
     ]
