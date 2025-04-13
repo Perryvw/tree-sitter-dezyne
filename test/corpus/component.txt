@@ -1,11 +1,11 @@
 ===========================
-Port named if
+Basic component with port and on
 ===========================
 component A {
-    requires I if;
+    requires I p;
     behavior {
-        on if.e: {
-            if.bla();
+        on p.e: {
+            p.bla();
         }
     }
 }
@@ -33,3 +33,74 @@ component A {
                                     (identifier)
                                     (identifier))
                                 (arguments)))))))))
+
+===========================
+If statement in on
+===========================
+component A {
+    requires I p;
+    behavior {
+        on p.e: {
+            if(abc) {
+                p.bla();
+            }
+        }
+    }
+}
+---
+(root
+    (component
+        (scoped_name)
+        (port
+            (port_direction)
+            (compound_name
+                (identifier))
+            (name))
+        (behavior
+            (behavior_body
+                (on
+                    (triggers
+                        (trigger
+                            (compound_name
+                                (identifier)
+                                (identifier))))
+                    (compound
+                        (if_statement
+                            (compound_name
+                                (identifier))
+                            (compound
+                                (call_statement
+                                    (call
+                                        (compound_name
+                                            (identifier)
+                                            (identifier))
+                                        (arguments)))))))))))
+
+===========================
+Shared state
+===========================
+component A {
+    requires I p;
+    behavior {
+        [p.state.s] {
+
+        }
+    }
+}
+---
+(root
+    (component
+        (scoped_name)
+        (port
+            (port_direction)
+            (compound_name
+                (identifier))
+            (name))
+        (behavior
+            (behavior_body
+                (guard
+                    (compound_name
+                        (identifier)
+                        (identifier)
+                        (identifier))
+                    (compound))))))

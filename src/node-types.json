@@ -1252,16 +1252,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "if_keyword",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -2294,8 +2284,8 @@
     "named": true
   },
   {
-    "type": "if_keyword",
-    "named": true
+    "type": "if",
+    "named": false
   },
   {
     "type": "illegal",

@@ -1788,8 +1788,8 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "if_keyword"
+            "type": "STRING",
+            "value": "if"
           },
           {
             "type": "STRING",
@@ -1842,10 +1842,6 @@
           }
         ]
       }
-    },
-    "if_keyword": {
-      "type": "PATTERN",
-      "value": "if[\\s\\(]"
     },
     "reply": {
       "type": "SEQ",
