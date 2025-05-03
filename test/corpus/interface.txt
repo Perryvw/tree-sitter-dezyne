@@ -47,9 +47,10 @@ interface I {
                             (identifier)
                             (identifier)))
                     (guard
-                        (compound_name
-                            (identifier)
-                            (identifier))
+                        (guard_condition
+                            (compound_name
+                                (identifier)
+                                (identifier)))
                         (on
                             (triggers
                                 (trigger

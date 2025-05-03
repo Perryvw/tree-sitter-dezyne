@@ -39,9 +39,10 @@ component C {
         (behavior
         (behavior_body
             (guard
-                (compound_name
-                    (identifier)
-                    (identifier))
+                (guard_condition
+                    (compound_name
+                        (identifier)
+                        (identifier)))
                 (compound
                     (invariant
                     (binary_expression

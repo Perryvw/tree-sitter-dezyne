@@ -99,8 +99,37 @@ component A {
         (behavior
             (behavior_body
                 (guard
-                    (compound_name
-                        (identifier)
-                        (identifier)
-                        (identifier))
+                    (guard_condition
+                        (compound_name
+                            (identifier)
+                            (identifier)
+                            (identifier)))
+                    (compound))))))
+
+===========================
+Incomplete guard
+===========================
+component A {
+    requires I p;
+    behavior {
+        [p.state.] {}
+    }
+}
+---
+(root
+    (component
+        (scoped_name)
+        (port
+            (port_direction)
+            (compound_name
+                (identifier))
+            (name))
+        (behavior
+            (behavior_body
+                (guard
+                    (guard_condition
+                        (compound_name
+                            (identifier)
+                            (identifier))
+                        (ERROR))
                     (compound))))))

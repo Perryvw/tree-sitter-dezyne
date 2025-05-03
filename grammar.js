@@ -186,11 +186,17 @@ module.exports = grammar({
 
         trigger_formal: $ => seq(field('name', $.name), optional(seq('<-', field('assign_name', $.name)))),
 
-        guard: $ => seq('[', $._otherwise_or_expression, ']', field('body', $._statement)),
+        guard: $ => seq(
+            field('condition', $.guard_condition), 
+            field('body', $._statement)
+        ),
+        guard_condition: $ => seq(
+            '[', field('expression', $._otherwise_or_expression), ']'
+        ),
 
         _otherwise_or_expression: $ => choice(
-            field('condition', $.otherwise), 
-            field('condition', $._expression)
+            $.otherwise, 
+            $._expression
         ),
 
         otherwise: $ => 'otherwise',

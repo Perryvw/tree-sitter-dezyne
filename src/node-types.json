@@ -1074,6 +1074,22 @@
         "required": true,
         "types": [
           {
+            "type": "guard_condition",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "guard_condition",
+    "named": true,
+    "fields": {
+      "expression": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
             "type": "binary_expression",
             "named": true
           },
