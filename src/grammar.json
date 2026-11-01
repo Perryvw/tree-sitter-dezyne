@@ -365,6 +365,10 @@
         {
           "type": "SYMBOL",
           "name": "foreign_function"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "contract"
         }
       ]
     },

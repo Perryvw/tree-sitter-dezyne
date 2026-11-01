@@ -56,7 +56,8 @@ module.exports = grammar({
             $.interface,
             $.component,
             $.function,
-            $.foreign_function
+            $.foreign_function,
+            $.contract,
         ),
 
         interface: $ => seq('interface', field('name', $.scoped_name), field('body', $.interface_body)),
