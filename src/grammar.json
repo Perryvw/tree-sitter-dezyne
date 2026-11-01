@@ -519,8 +519,12 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "implements_clause"
+              "type": "FIELD",
+              "name": "implements",
+              "content": {
+                "type": "SYMBOL",
+                "name": "implements_clause"
+              }
             },
             {
               "type": "BLANK"

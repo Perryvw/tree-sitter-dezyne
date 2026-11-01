@@ -1114,6 +1114,16 @@
           }
         ]
       },
+      "implements": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "implements_clause",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": true,
@@ -1134,16 +1144,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "implements_clause",
-          "named": true
-        }
-      ]
     }
   },
   {

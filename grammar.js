@@ -81,7 +81,7 @@ module.exports = grammar({
         component: $ => seq(
             'component',
             field('name', $.scoped_name),
-            optional($.implements_clause),
+            optional(field('implements', $.implements_clause)),
             '{',
             repeat(field('port', $.port)),
             optional(field('body', $._body)),
