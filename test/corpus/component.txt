@@ -10,29 +10,30 @@ component A {
     }
 }
 ---
+
 (root
-    (component
-        (scoped_name)
-        (port
-            (port_direction)
-            (compound_name
-                (identifier))
-            (name))
-        (behavior
-            (behavior_body
-                (on
-                    (triggers
-                        (trigger
-                            (compound_name
-                                (identifier)
-                                (identifier))))
-                    (compound
-                        (call_statement
-                            (call
-                                (compound_name
-                                    (identifier)
-                                    (identifier))
-                                (arguments)))))))))
+  (component
+    (scoped_name)
+    (port
+      (port_direction)
+      (compound_name
+        (identifier))
+      (name))
+    (behavior
+      (behavior_body
+        (on
+          (triggers
+            (trigger
+              (compound_name
+                (identifier)
+                (identifier))))
+          (compound
+            (call_statement
+              (call
+                (compound_name
+                  (identifier)
+                  (identifier))
+                (arguments)))))))))
 
 ===========================
 If statement in on
@@ -48,33 +49,34 @@ component A {
     }
 }
 ---
+
 (root
-    (component
-        (scoped_name)
-        (port
-            (port_direction)
-            (compound_name
+  (component
+    (scoped_name)
+    (port
+      (port_direction)
+      (compound_name
+        (identifier))
+      (name))
+    (behavior
+      (behavior_body
+        (on
+          (triggers
+            (trigger
+              (compound_name
+                (identifier)
+                (identifier))))
+          (compound
+            (if_statement
+              (compound_name
                 (identifier))
-            (name))
-        (behavior
-            (behavior_body
-                (on
-                    (triggers
-                        (trigger
-                            (compound_name
-                                (identifier)
-                                (identifier))))
-                    (compound
-                        (if_statement
-                            (compound_name
-                                (identifier))
-                            (compound
-                                (call_statement
-                                    (call
-                                        (compound_name
-                                            (identifier)
-                                            (identifier))
-                                        (arguments)))))))))))
+              (compound
+                (call_statement
+                  (call
+                    (compound_name
+                      (identifier)
+                      (identifier))
+                    (arguments)))))))))))
 
 ===========================
 Shared state
@@ -88,23 +90,24 @@ component A {
     }
 }
 ---
+
 (root
-    (component
-        (scoped_name)
-        (port
-            (port_direction)
+  (component
+    (scoped_name)
+    (port
+      (port_direction)
+      (compound_name
+        (identifier))
+      (name))
+    (behavior
+      (behavior_body
+        (guard
+          (guard_condition
             (compound_name
-                (identifier))
-            (name))
-        (behavior
-            (behavior_body
-                (guard
-                    (guard_condition
-                        (compound_name
-                            (identifier)
-                            (identifier)
-                            (identifier)))
-                    (compound))))))
+              (identifier)
+              (identifier)
+              (identifier)))
+          (compound))))))
 
 ===========================
 Incomplete guard
@@ -116,20 +119,46 @@ component A {
     }
 }
 ---
+
+(root
+  (component
+    (scoped_name)
+    (port
+      (port_direction)
+      (compound_name
+        (identifier))
+      (name))
+    (behavior
+      (behavior_body
+        (guard
+          (guard_condition
+            (compound_name
+              (identifier)
+              (identifier)))
+          (compound))))))
+
+===========================
+Incomplete on
+===========================
+component C {
+    provides I i;
+
+    behavior {
+        on i.
+    }
+}
+---
+
 (root
     (component
-        (scoped_name)
-        (port
-            (port_direction)
+    (scoped_name)
+    (port
+        (port_direction)
+        (compound_name
+        (identifier))
+        (name))
+    (behavior
+        (behavior_body
+        (ERROR
             (compound_name
-                (identifier))
-            (name))
-        (behavior
-            (behavior_body
-                (guard
-                    (guard_condition
-                        (compound_name
-                            (identifier)
-                            (identifier))
-                        (ERROR))
-                    (compound))))))
+            (identifier)))))))

@@ -7,7 +7,6 @@ module.exports = grammar({
 
     conflicts: $ => [
         [$.compound_name],
-        [$.group, $._assure_expression]
     ],
 
     rules: {
@@ -70,20 +69,23 @@ module.exports = grammar({
         ),
 
         event: $ => seq(
-            field('direction', $.direction), 
-            field('type_name', $.type_name), 
-            field('event_name', $.event_name), 
-            field('formals', $.formals), 
+            field('direction', $.direction),
+            field('type_name', $.type_name),
+            field('event_name', $.event_name),
+            field('formals', $.formals),
             ';'
         ),
 
         direction: $ => choice('in', 'out'),
 
         component: $ => seq(
-            'component', 
+            'component',
             field('name', $.scoped_name),
             optional($.implements_clause),
-            '{', repeat(field('port', $.port)), optional(field('body', $._body)), '}'
+            '{',
+            repeat(field('port', $.port)),
+            optional(field('body', $._body)),
+            '}'
         ),
 
         implements_clause: $ => seq('implements', repeat1Delimited(field('name', $.scoped_name), ',')),
@@ -108,11 +110,11 @@ module.exports = grammar({
         asterisk: _ => '*',
 
         port: $ => seq(
-            field('direction', $.port_direction), 
-            optional(field('qualifiers', $.port_qualifiers)), 
-            field('type', $.compound_name), 
-            optional(field('formals', $.formals)), 
-            field('name', $.name), 
+            field('direction', $.port_direction),
+            optional(field('qualifiers', $.port_qualifiers)),
+            field('type', $.compound_name),
+            optional(field('formals', $.formals)),
+            field('name', $.name),
             ';'
         ),
 
@@ -125,8 +127,8 @@ module.exports = grammar({
         formals: $ => seq('(', repeatDelimited(field('formal', $.formal), ','), ')'),
 
         formal: $ => seq(
-            optional(field('direction', $.formal_direction)), 
-            field('type', $.type_name), 
+            optional(field('direction', $.formal_direction)),
+            field('type', $.type_name),
             field('name', $.var_name)
         ),
 
@@ -134,7 +136,7 @@ module.exports = grammar({
 
         type_name: $ => choice(field('name', $.compound_name), 'bool', 'void'),
 
-        behavior: $ => seq(choice('behavior', 'behaviour') , optional(field('name', $.name)), field('body', $.behavior_body)),
+        behavior: $ => seq(choice('behavior', 'behaviour'), optional(field('name', $.name)), field('body', $.behavior_body)),
 
         behavior_body: $ => seq('{', repeat(field('statement', $._behavior_statement)), '}'),
 
@@ -146,16 +148,16 @@ module.exports = grammar({
         ),
 
         function: $ => seq(
-            field('return_type', $.type_name), 
-            field('name', $.name), 
-            field('formals', $.formals), 
+            field('return_type', $.type_name),
+            field('name', $.name),
+            field('formals', $.formals),
             field('body', choice(field('compound', $.compound), field('expression', $.function_body_one_line)))
         ),
 
         foreign_function: $ => seq(
-            field('return_type', $.type_name), 
-            field('name', $.name), 
-            field('formals', $.formals), 
+            field('return_type', $.type_name),
+            field('name', $.name),
+            field('formals', $.formals),
             ';'
         ),
 
@@ -201,7 +203,7 @@ module.exports = grammar({
         trigger_formal: $ => seq(field('name', $.name), optional(seq('<-', field('assign_name', $.name)))),
 
         guard: $ => seq(
-            field('condition', $.guard_condition), 
+            field('condition', $.guard_condition),
             field('body', $._statement)
         ),
         guard_condition: $ => seq(
@@ -209,18 +211,18 @@ module.exports = grammar({
         ),
 
         _otherwise_or_expression: $ => choice(
-            $.otherwise, 
+            $.otherwise,
             $._expression
         ),
 
         otherwise: $ => 'otherwise',
 
-        compound : $ => seq('{', repeat(field('statement', $._statement)), '}'),
+        compound: $ => seq('{', repeat(field('statement', $._statement)), '}'),
 
         variable: $ => seq(
-            field('type_name', $.type_name), 
-            field('name', $.var_name), 
-            optional(seq('=', field('expression', $._expression))), 
+            field('type_name', $.type_name),
+            field('name', $.var_name),
+            optional(seq('=', field('expression', $._expression))),
             ';'
         ),
 
@@ -268,9 +270,9 @@ module.exports = grammar({
         assign: $ => seq(field('left', $.name), '=', field('right', $._expression), ';'),
 
         if_statement: $ => prec.left(seq(
-            "if", 
-            '(', field('expression', $._expression), ')', 
-            field('statement', $._imperative_statement), 
+            "if",
+            '(', field('expression', $._expression), ')',
+            field('statement', $._imperative_statement),
             optional(seq('else', field('else_statement', $._imperative_statement)))
         )),
 
@@ -289,7 +291,7 @@ module.exports = grammar({
             $.binary_expression,
         ),
 
-        group: $ => seq('(', field('expression', $._expression), ')'),
+        group: $ => prec(10, seq('(', field('expression', $._expression), ')')),
 
         literal: $ => choice($.number, 'true', 'false'),
 
@@ -316,10 +318,8 @@ module.exports = grammar({
 
         compound_name: $ => seq(
             optional(field('global', '.')),
-            seq(
-                field('part', alias($.name, $.identifier)), 
-                repeat(seq('.', field('part', alias($.member_name, $.identifier))))
-            )
+            field('part', alias($.name, $.identifier)),
+            repeat(seq('.', optional(field('part', alias($.member_name, $.identifier))))),
         ),
 
         name: $ => $._identifier,
@@ -337,7 +337,7 @@ module.exports = grammar({
         ),
 
         // Assure
-        contract: $ => seq('contract', $.scoped_name, '{', repeat(field('contract_statement', $._contract_statement)),'}'),
+        contract: $ => seq('contract', $.scoped_name, '{', repeat(field('contract_statement', $._contract_statement)), '}'),
 
         _contract_statement: $ => choice(
             $.port,
@@ -355,10 +355,10 @@ module.exports = grammar({
             $.assure_when_statement,
         ),
 
-        assure_after_statement: $ => seq('after', '(', field('event', $._expression), ')', '{', field('expression', $._assure_statement),'}'),
-        assure_before_statement: $ => seq('before', '(', field('event', $._expression), ')', '{', field('expression', $._assure_statement),'}'),
-        assure_during_statement: $ => seq('during', '(', field('start', $._expression), ',', field('end', $._expression), ')', '{', field('expression', $._assure_statement),'}'),
-        assure_when_statement: $ => seq('when', '(', field('condition', $._expression), ')', '{', field('expression', $._assure_statement),'}'),
+        assure_after_statement: $ => seq('after', '(', field('event', $._expression), ')', '{', field('expression', $._assure_statement), '}'),
+        assure_before_statement: $ => seq('before', '(', field('event', $._expression), ')', '{', field('expression', $._assure_statement), '}'),
+        assure_during_statement: $ => seq('during', '(', field('start', $._expression), ',', field('end', $._expression), ')', '{', field('expression', $._assure_statement), '}'),
+        assure_when_statement: $ => seq('when', '(', field('condition', $._expression), ')', '{', field('expression', $._assure_statement), '}'),
 
         _assure_statement: $ => choice(
             $.assure_on_eventually_statement,
@@ -383,7 +383,7 @@ module.exports = grammar({
             prec.left(2, seq(field('left', $._assure_expression), field('operator', 'or'), field('right', $._assure_expression))),
         ),
 
-        assure_group: $ => seq('(', field('expression', $._assure_expression), ')'),
+        assure_group: $ => prec(20, seq('(', field('expression', $._assure_expression), ')')),
     }
 });
 
