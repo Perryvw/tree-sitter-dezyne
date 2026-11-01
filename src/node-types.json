@@ -1261,17 +1261,17 @@
             "named": true
           }
         ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "name",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "scoped_name",
-          "named": true
-        }
-      ]
     }
   },
   {

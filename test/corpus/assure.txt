@@ -8,7 +8,7 @@ component A implements MyContract {}
 
 (root
   (contract
-    (scoped_name))
+    (name))
   (component
     (scoped_name)
     (implements_clause
@@ -25,9 +25,9 @@ component A implements MyContract, MyOtherContract {}
 
 (root
   (contract
-    (scoped_name))
+    (name))
   (contract
-    (scoped_name))
+    (name))
   (component
     (scoped_name)
     (implements_clause
@@ -70,7 +70,7 @@ contract MyContract {
 
 (root
   (contract
-    (scoped_name)
+    (name)
     (port
       (port_direction)
       (compound_name

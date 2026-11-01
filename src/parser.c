@@ -1513,69 +1513,69 @@ static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [32] = {.index = 51, .length = 2},
   [33] = {.index = 53, .length = 2},
   [34] = {.index = 55, .length = 2},
-  [35] = {.index = 57, .length = 1},
-  [36] = {.index = 58, .length = 2},
-  [37] = {.index = 60, .length = 1},
-  [38] = {.index = 61, .length = 2},
-  [39] = {.index = 63, .length = 2},
-  [40] = {.index = 65, .length = 2},
-  [41] = {.index = 67, .length = 3},
-  [42] = {.index = 70, .length = 2},
-  [43] = {.index = 72, .length = 2},
-  [44] = {.index = 74, .length = 1},
-  [45] = {.index = 75, .length = 1},
-  [46] = {.index = 76, .length = 2},
-  [47] = {.index = 78, .length = 3},
-  [48] = {.index = 81, .length = 2},
-  [49] = {.index = 83, .length = 2},
-  [50] = {.index = 85, .length = 2},
-  [51] = {.index = 87, .length = 2},
-  [52] = {.index = 89, .length = 3},
-  [53] = {.index = 92, .length = 1},
-  [54] = {.index = 93, .length = 1},
-  [55] = {.index = 94, .length = 1},
-  [56] = {.index = 95, .length = 1},
-  [57] = {.index = 96, .length = 2},
-  [58] = {.index = 98, .length = 1},
-  [59] = {.index = 99, .length = 2},
-  [60] = {.index = 101, .length = 1},
-  [61] = {.index = 102, .length = 2},
-  [62] = {.index = 104, .length = 1},
-  [63] = {.index = 105, .length = 1},
-  [64] = {.index = 106, .length = 2},
-  [65] = {.index = 108, .length = 3},
-  [66] = {.index = 111, .length = 2},
-  [67] = {.index = 113, .length = 2},
-  [68] = {.index = 115, .length = 2},
-  [69] = {.index = 117, .length = 2},
-  [70] = {.index = 119, .length = 2},
-  [71] = {.index = 121, .length = 2},
-  [72] = {.index = 123, .length = 3},
-  [73] = {.index = 126, .length = 4},
-  [74] = {.index = 130, .length = 2},
-  [75] = {.index = 132, .length = 4},
-  [76] = {.index = 136, .length = 4},
-  [77] = {.index = 140, .length = 2},
-  [78] = {.index = 142, .length = 1},
-  [79] = {.index = 143, .length = 2},
-  [80] = {.index = 145, .length = 2},
-  [81] = {.index = 147, .length = 5},
-  [82] = {.index = 152, .length = 1},
-  [83] = {.index = 153, .length = 2},
-  [84] = {.index = 155, .length = 2},
-  [85] = {.index = 157, .length = 2},
-  [86] = {.index = 159, .length = 1},
-  [87] = {.index = 160, .length = 3},
-  [88] = {.index = 163, .length = 2},
-  [89] = {.index = 165, .length = 2},
-  [90] = {.index = 167, .length = 2},
-  [91] = {.index = 169, .length = 2},
-  [92] = {.index = 171, .length = 2},
-  [93] = {.index = 173, .length = 3},
-  [94] = {.index = 176, .length = 2},
-  [95] = {.index = 178, .length = 2},
-  [96] = {.index = 180, .length = 2},
-  [97] = {.index = 182, .length = 3},
+  [35] = {.index = 57, .length = 2},
+  [36] = {.index = 59, .length = 2},
+  [37] = {.index = 61, .length = 1},
+  [38] = {.index = 62, .length = 2},
+  [39] = {.index = 64, .length = 2},
+  [40] = {.index = 66, .length = 2},
+  [41] = {.index = 68, .length = 3},
+  [42] = {.index = 71, .length = 2},
+  [43] = {.index = 73, .length = 2},
+  [44] = {.index = 75, .length = 1},
+  [45] = {.index = 76, .length = 1},
+  [46] = {.index = 77, .length = 2},
+  [47] = {.index = 79, .length = 3},
+  [48] = {.index = 82, .length = 2},
+  [49] = {.index = 84, .length = 2},
+  [50] = {.index = 86, .length = 2},
+  [51] = {.index = 88, .length = 2},
+  [52] = {.index = 90, .length = 3},
+  [53] = {.index = 93, .length = 1},
+  [54] = {.index = 94, .length = 1},
+  [55] = {.index = 95, .length = 1},
+  [56] = {.index = 96, .length = 1},
+  [57] = {.index = 97, .length = 2},
+  [58] = {.index = 99, .length = 1},
+  [59] = {.index = 100, .length = 2},
+  [60] = {.index = 102, .length = 1},
+  [61] = {.index = 103, .length = 2},
+  [62] = {.index = 105, .length = 1},
+  [63] = {.index = 106, .length = 1},
+  [64] = {.index = 107, .length = 2},
+  [65] = {.index = 109, .length = 3},
+  [66] = {.index = 112, .length = 2},
+  [67] = {.index = 114, .length = 2},
+  [68] = {.index = 116, .length = 2},
+  [69] = {.index = 118, .length = 2},
+  [70] = {.index = 120, .length = 2},
+  [71] = {.index = 122, .length = 2},
+  [72] = {.index = 124, .length = 3},
+  [73] = {.index = 127, .length = 4},
+  [74] = {.index = 131, .length = 2},
+  [75] = {.index = 133, .length = 4},
+  [76] = {.index = 137, .length = 4},
+  [77] = {.index = 141, .length = 2},
+  [78] = {.index = 143, .length = 1},
+  [79] = {.index = 144, .length = 2},
+  [80] = {.index = 146, .length = 2},
+  [81] = {.index = 148, .length = 5},
+  [82] = {.index = 153, .length = 1},
+  [83] = {.index = 154, .length = 2},
+  [84] = {.index = 156, .length = 2},
+  [85] = {.index = 158, .length = 2},
+  [86] = {.index = 160, .length = 1},
+  [87] = {.index = 161, .length = 3},
+  [88] = {.index = 164, .length = 2},
+  [89] = {.index = 166, .length = 2},
+  [90] = {.index = 168, .length = 2},
+  [91] = {.index = 170, .length = 2},
+  [92] = {.index = 172, .length = 2},
+  [93] = {.index = 174, .length = 3},
+  [94] = {.index = 177, .length = 2},
+  [95] = {.index = 179, .length = 2},
+  [96] = {.index = 181, .length = 2},
+  [97] = {.index = 183, .length = 3},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
@@ -1672,192 +1672,193 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_name, 2, .inherited = true},
   [57] =
     {field_contract_statement, 3, .inherited = true},
-  [58] =
+    {field_name, 1},
+  [59] =
     {field_contract_statement, 0, .inherited = true},
     {field_contract_statement, 1, .inherited = true},
-  [60] =
-    {field_formal, 1},
   [61] =
+    {field_formal, 1},
+  [62] =
     {field_name, 1},
     {field_type, 0},
-  [63] =
+  [64] =
     {field_name, 0, .inherited = true},
     {field_name, 1, .inherited = true},
-  [65] =
+  [66] =
     {field_from, 0},
     {field_to, 2},
-  [67] =
+  [68] =
     {field_from, 3, .inherited = true},
     {field_name, 1},
     {field_to, 3, .inherited = true},
-  [70] =
+  [71] =
     {field_name, 1},
     {field_value, 3},
-  [72] =
+  [73] =
     {field_behavior, 2},
     {field_interface_statement, 1, .inherited = true},
-  [74] =
-    {field_asterisk, 0},
   [75] =
-    {field_instance_or_binding, 0},
+    {field_asterisk, 0},
   [76] =
+    {field_instance_or_binding, 0},
+  [77] =
     {field_qualifier, 0, .inherited = true},
     {field_qualifier, 1, .inherited = true},
-  [78] =
+  [79] =
     {field_body, 4},
     {field_name, 1},
     {field_port, 3, .inherited = true},
-  [81] =
+  [82] =
     {field_body, 4},
     {field_name, 1},
-  [83] =
+  [84] =
     {field_name, 1},
     {field_port, 4, .inherited = true},
-  [85] =
+  [86] =
     {field_formal, 1},
     {field_formal, 2, .inherited = true},
-  [87] =
+  [88] =
     {field_formal, 0, .inherited = true},
     {field_formal, 1, .inherited = true},
-  [89] =
+  [90] =
     {field_direction, 0},
     {field_name, 2},
     {field_type, 1},
-  [92] =
-    {field_statement, 1},
   [93] =
-    {field_optional, 0},
+    {field_statement, 1},
   [94] =
-    {field_inevitable, 0},
+    {field_optional, 0},
   [95] =
-    {field_trigger, 0},
+    {field_inevitable, 0},
   [96] =
+    {field_trigger, 0},
+  [97] =
     {field_body, 1},
     {field_condition, 0},
-  [98] =
-    {field_call, 0},
   [99] =
+    {field_call, 0},
+  [100] =
     {field_arguments, 1},
     {field_name, 0},
-  [101] =
-    {field_statement, 1, .inherited = true},
   [102] =
+    {field_statement, 1, .inherited = true},
+  [103] =
     {field_expression, 1},
     {field_operator, 0},
-  [104] =
-    {field_expression, 1},
   [105] =
-    {field_instance_or_binding, 1, .inherited = true},
+    {field_expression, 1},
   [106] =
+    {field_instance_or_binding, 1, .inherited = true},
+  [107] =
     {field_instance_or_binding, 0, .inherited = true},
     {field_instance_or_binding, 1, .inherited = true},
-  [108] =
+  [109] =
     {field_body, 5},
     {field_name, 1},
     {field_port, 4, .inherited = true},
-  [111] =
+  [112] =
     {field_formals, 1},
     {field_optional, 0},
-  [113] =
+  [114] =
     {field_formals, 1},
     {field_inevitable, 0},
-  [115] =
+  [116] =
     {field_trigger, 0},
     {field_trigger, 1, .inherited = true},
-  [117] =
+  [118] =
     {field_formals, 1},
     {field_name, 0},
-  [119] =
+  [120] =
     {field_arguments, 1},
     {field_statement, 2},
-  [121] =
+  [122] =
     {field_name, 1},
     {field_type_name, 0},
-  [123] =
+  [124] =
     {field_left, 0},
     {field_operator, 1},
     {field_right, 2},
-  [126] =
+  [127] =
     {field_direction, 0},
     {field_event_name, 2},
     {field_formals, 3},
     {field_type_name, 1},
-  [130] =
+  [131] =
     {field_asterisk, 2},
     {field_name, 0},
-  [132] =
+  [133] =
     {field_direction, 0},
     {field_name, 3},
     {field_qualifiers, 1},
     {field_type, 2},
-  [136] =
+  [137] =
     {field_direction, 0},
     {field_formals, 2},
     {field_name, 3},
     {field_type, 1},
-  [140] =
+  [141] =
     {field_body, 3},
     {field_triggers, 1},
-  [142] =
-    {field_trigger, 1},
   [143] =
+    {field_trigger, 1},
+  [144] =
     {field_trigger, 0, .inherited = true},
     {field_trigger, 1, .inherited = true},
-  [145] =
+  [146] =
     {field_left, 0},
     {field_right, 2},
-  [147] =
+  [148] =
     {field_direction, 0},
     {field_formals, 3},
     {field_name, 4},
     {field_qualifiers, 1},
     {field_type, 2},
-  [152] =
-    {field_trigger_formal, 1},
   [153] =
+    {field_trigger_formal, 1},
+  [154] =
     {field_expression, 1},
     {field_expression, 2, .inherited = true},
-  [155] =
+  [156] =
     {field_expression, 0, .inherited = true},
     {field_expression, 1, .inherited = true},
-  [157] =
+  [158] =
     {field_expression, 2},
     {field_statement, 4},
-  [159] =
-    {field_expression, 2},
   [160] =
+    {field_expression, 2},
+  [161] =
     {field_expression, 3},
     {field_name, 1},
     {field_type_name, 0},
-  [163] =
+  [164] =
     {field_call, 0},
     {field_result, 2},
-  [165] =
+  [166] =
     {field_eventually_expression, 3},
     {field_on_expression, 1},
-  [167] =
+  [168] =
     {field_trigger_formal, 1},
     {field_trigger_formal, 2, .inherited = true},
-  [169] =
+  [170] =
     {field_trigger_formal, 0, .inherited = true},
     {field_trigger_formal, 1, .inherited = true},
-  [171] =
+  [172] =
     {field_assign_name, 2},
     {field_name, 0},
-  [173] =
+  [174] =
     {field_else_statement, 6},
     {field_expression, 2},
     {field_statement, 4},
-  [176] =
+  [177] =
     {field_expression, 4},
     {field_port, 0},
-  [178] =
+  [179] =
     {field_event, 2},
     {field_expression, 5},
-  [180] =
+  [181] =
     {field_condition, 2},
     {field_expression, 5},
-  [182] =
+  [183] =
     {field_end, 4},
     {field_expression, 7},
     {field_start, 2},
@@ -14664,12 +14665,12 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_SLASH_SLASH,
     ACTIONS(5), 1,
       anon_sym_SLASH_STAR,
-    ACTIONS(1043), 1,
+    ACTIONS(772), 1,
       sym__identifier,
     STATE(395), 1,
       sym_comment,
     STATE(475), 1,
-      sym_scoped_name,
+      sym_name,
   [13445] = 5,
     ACTIONS(3), 1,
       anon_sym_SLASH_SLASH,
@@ -16849,8 +16850,8 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [644] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_interface_body, 4, 0, 43),
   [646] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_interface_body, 4, 0, 43),
   [648] = {.entry = {.count = 1, .reusable = true}}, SHIFT(75),
-  [650] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_contract, 4, 0, 0),
-  [652] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_contract, 4, 0, 0),
+  [650] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_contract, 4, 0, 15),
+  [652] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_contract, 4, 0, 15),
   [654] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_component, 5, 0, 32),
   [656] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_component, 5, 0, 32),
   [658] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_foreign_function, 4, 0, 20),

@@ -337,7 +337,7 @@ module.exports = grammar({
         ),
 
         // Assure
-        contract: $ => seq('contract', $.scoped_name, '{', repeat(field('contract_statement', $._contract_statement)), '}'),
+        contract: $ => seq('contract', field('name', $.name), '{', repeat(field('contract_statement', $._contract_statement)), '}'),
 
         _contract_statement: $ => choice(
             $.port,

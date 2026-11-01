@@ -2675,8 +2675,12 @@
           "value": "contract"
         },
         {
-          "type": "SYMBOL",
-          "name": "scoped_name"
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "name"
+          }
         },
         {
           "type": "STRING",
