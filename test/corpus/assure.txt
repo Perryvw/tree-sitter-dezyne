@@ -1,0 +1,255 @@
+===========================
+Component implementing contract
+===========================
+contract MyContract {}
+
+component A implements MyContract {}
+---
+
+(root
+  (contract
+    (scoped_name))
+  (component
+    (scoped_name)
+    (implements_clause
+      (scoped_name))))
+
+===========================
+Component implementing multiple contracts
+===========================
+contract MyContract {}
+contract MyOtherContract {}
+
+component A implements MyContract, MyOtherContract {}
+---
+
+(root
+  (contract
+    (scoped_name))
+  (contract
+    (scoped_name))
+  (component
+    (scoped_name)
+    (implements_clause
+      (scoped_name)
+      (scoped_name))))
+
+===========================
+Contract
+===========================
+contract MyContract {
+    provides I provided;
+    requires I required;
+
+    // Simple on eventually
+    assure Assurance1 { on required.foo() -> true eventually provided.bar() }
+
+    // Simple illegal
+    assure Assurance2 { illegal required.foo(_) }
+    assure Assurance2b { illegal required.foo(_) -> false }
+
+    // When assurance
+    assure Assurance3 { when(provided.state.Active) { on required.foo() eventually provided.bar() } }
+    assure Assurance3b { when(provided.state==true) { on required.foo() eventually provided.bar() } }
+
+    // During assurance
+    assure Assurance4 { during(provided.foo(), provided.bar()) { illegal required.bla() } }
+
+    // After
+    assure Assurance5 { after(provided.foo()) { illegal required.foo() } }
+
+    // Before
+    assure Assurance6 { before(provided.foo()) { illegal required.foo() } }
+
+    /* Binary */
+    assure Assurance7 { on provided.start() eventually port.done() or port.fail(_) }
+    // Binary with brackets
+    assure Assurance8 { on provided.start() eventually (port.done() or port.fail(_)) }
+}
+---
+
+(root
+  (contract
+    (scoped_name)
+    (port
+      (port_direction)
+      (compound_name
+        (identifier))
+      (name))
+    (port
+      (port_direction)
+      (compound_name
+        (identifier))
+      (name))
+    (comment)
+    (assure_statement
+      (name)
+      (assure_on_eventually_statement
+        (assure_call_expression
+          (call
+            (compound_name
+              (identifier)
+              (identifier))
+            (arguments))
+          (literal))
+        (call
+          (compound_name
+            (identifier)
+            (identifier))
+          (arguments))))
+    (comment)
+    (assure_statement
+      (name)
+      (assure_illegal_statement
+        (call
+          (compound_name
+            (identifier)
+            (identifier))
+          (arguments
+            (compound_name
+              (identifier))))))
+    (assure_statement
+      (name)
+      (assure_illegal_statement
+        (assure_call_expression
+          (call
+            (compound_name
+              (identifier)
+              (identifier))
+            (arguments
+              (compound_name
+                (identifier))))
+          (literal))))
+    (comment)
+    (assure_statement
+      (name)
+      (assure_when_statement
+        (compound_name
+          (identifier)
+          (identifier)
+          (identifier))
+        (assure_on_eventually_statement
+          (call
+            (compound_name
+              (identifier)
+              (identifier))
+            (arguments))
+          (call
+            (compound_name
+              (identifier)
+              (identifier))
+            (arguments)))))
+    (assure_statement
+      (name)
+      (assure_when_statement
+        (binary_expression
+          (compound_name
+            (identifier)
+            (identifier))
+          (literal))
+        (assure_on_eventually_statement
+          (call
+            (compound_name
+              (identifier)
+              (identifier))
+            (arguments))
+          (call
+            (compound_name
+              (identifier)
+              (identifier))
+            (arguments)))))
+    (comment)
+    (assure_statement
+      (name)
+      (assure_during_statement
+        (call
+          (compound_name
+            (identifier)
+            (identifier))
+          (arguments))
+        (call
+          (compound_name
+            (identifier)
+            (identifier))
+          (arguments))
+        (assure_illegal_statement
+          (call
+            (compound_name
+              (identifier)
+              (identifier))
+            (arguments)))))
+    (comment)
+    (assure_statement
+      (name)
+      (assure_after_statement
+        (call
+          (compound_name
+            (identifier)
+            (identifier))
+          (arguments))
+        (assure_illegal_statement
+          (call
+            (compound_name
+              (identifier)
+              (identifier))
+            (arguments)))))
+    (comment)
+    (assure_statement
+      (name)
+      (assure_before_statement
+        (call
+          (compound_name
+            (identifier)
+            (identifier))
+          (arguments))
+        (assure_illegal_statement
+          (call
+            (compound_name
+              (identifier)
+              (identifier))
+            (arguments)))))
+    (comment)
+    (assure_statement
+      (name)
+      (assure_on_eventually_statement
+        (call
+          (compound_name
+            (identifier)
+            (identifier))
+          (arguments))
+        (binary_assure_expression
+          (call
+            (compound_name
+              (identifier)
+              (identifier))
+            (arguments))
+          (call
+            (compound_name
+              (identifier)
+              (identifier))
+            (arguments
+              (compound_name
+                (identifier)))))))
+    (comment)
+    (assure_statement
+      (name)
+      (assure_on_eventually_statement
+        (call
+          (compound_name
+            (identifier)
+            (identifier))
+          (arguments))
+        (assure_group
+          (binary_assure_expression
+            (call
+              (compound_name
+                (identifier)
+                (identifier))
+              (arguments))
+            (call
+              (compound_name
+                (identifier)
+                (identifier))
+              (arguments
+                (compound_name
+                  (identifier))))))))))

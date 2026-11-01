@@ -7,6 +7,7 @@ module.exports = grammar({
 
     conflicts: $ => [
         [$.compound_name],
+        [$.group, $._assure_expression]
     ],
 
     rules: {
@@ -20,7 +21,8 @@ module.exports = grammar({
             $.interface,
             $.component,
             $.function,
-            $.foreign_function
+            $.foreign_function,
+            $.contract,
         ),
 
         import: $ => seq('import', field('file_name', $.file_name), ';'),
@@ -39,7 +41,7 @@ module.exports = grammar({
 
         enum: $ => seq('enum', field('name', $.scoped_name), field('fields', $.fields), ';'),
 
-        fields: $ => seq('{', field('name', $.member_name), repeat(seq(',', field('name', $.member_name))), optional(','), '}'),
+        fields: $ => seq('{', repeat1Delimited(field('name', $.member_name), ','), optional(','), '}'),
 
         int: $ => seq('subint', field('name', $.scoped_name), '{', $._range, '}', ';'),
 
@@ -79,9 +81,12 @@ module.exports = grammar({
 
         component: $ => seq(
             'component', 
-            field('name', $.scoped_name), 
+            field('name', $.scoped_name),
+            optional($.implements_clause),
             '{', repeat(field('port', $.port)), optional(field('body', $._body)), '}'
         ),
+
+        implements_clause: $ => seq('implements', repeat1Delimited(field('name', $.scoped_name), ',')),
 
         _body: $ => choice($.behavior, $.system),
 
@@ -117,7 +122,7 @@ module.exports = grammar({
 
         port_qualifier: _ => choice('blocking', 'external', 'injected'),
 
-        formals: $ => seq('(', optional(seq(field('formal', $.formal), repeat(seq(',', field('formal', $.formal))))), ')'),
+        formals: $ => seq('(', repeatDelimited(field('formal', $.formal), ','), ')'),
 
         formal: $ => seq(
             optional(field('direction', $.formal_direction)), 
@@ -176,7 +181,7 @@ module.exports = grammar({
 
         on: $ => seq('on', field('triggers', $.triggers), ':', field('body', $._statement)),
 
-        triggers: $ => seq(field('trigger', $.trigger), repeat(seq(',', field('trigger', $.trigger)))),
+        triggers: $ => repeat1Delimited(field('trigger', $.trigger), ','),
 
         trigger: $ => seq(
             choice(
@@ -191,7 +196,7 @@ module.exports = grammar({
 
         inevitable: $ => 'inevitable',
 
-        trigger_formals: $ => seq('(', optional(seq(field('trigger_formal', $.trigger_formal), repeat(seq(',', field('trigger_formal', $.trigger_formal))))), ')'),
+        trigger_formals: $ => seq('(', repeatDelimited(field('trigger_formal', $.trigger_formal), ','), ')'),
 
         trigger_formal: $ => seq(field('name', $.name), optional(seq('<-', field('assign_name', $.name)))),
 
@@ -252,14 +257,7 @@ module.exports = grammar({
 
         call: $ => seq(field('name', $.compound_name), field('arguments', $.arguments)),
 
-        arguments: $ => seq(
-            '(',
-            optional(seq(
-                field('expression', $._expression), 
-                repeat(seq(',', field('expression', $._expression)))
-            )), 
-            ')'
-        ),
+        arguments: $ => seq('(', repeatDelimited(field('expression', $._expression), ','), ')'),
 
         skip_statement: $ => ';',
 
@@ -337,5 +335,62 @@ module.exports = grammar({
             seq('//', /(\\+(.|\r?\n)|[^\\\n])*/),
             seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/'),
         ),
+
+        // Assure
+        contract: $ => seq('contract', $.scoped_name, '{', repeat(field('contract_statement', $._contract_statement)),'}'),
+
+        _contract_statement: $ => choice(
+            $.port,
+            $.assure_statement,
+        ),
+
+        assure_statement: $ => seq('assure', field('name', $.name), '{', field('body', $._assure_body), '}'),
+
+        _assure_body: $ => choice(
+            $.assure_on_eventually_statement,
+            $.assure_illegal_statement,
+            $.assure_after_statement,
+            $.assure_before_statement,
+            $.assure_during_statement,
+            $.assure_when_statement,
+        ),
+
+        assure_after_statement: $ => seq('after', '(', field('event', $._expression), ')', '{', field('expression', $._assure_statement),'}'),
+        assure_before_statement: $ => seq('before', '(', field('event', $._expression), ')', '{', field('expression', $._assure_statement),'}'),
+        assure_during_statement: $ => seq('during', '(', field('start', $._expression), ',', field('end', $._expression), ')', '{', field('expression', $._assure_statement),'}'),
+        assure_when_statement: $ => seq('when', '(', field('condition', $._expression), ')', '{', field('expression', $._assure_statement),'}'),
+
+        _assure_statement: $ => choice(
+            $.assure_on_eventually_statement,
+            $.assure_illegal_statement
+        ),
+
+        assure_on_eventually_statement: $ => seq('on', field('on_expression', $._assure_expression), 'eventually', field('eventually_expression', $._assure_expression)),
+        assure_illegal_statement: $ => seq('illegal', field('expression', $._assure_expression)),
+
+        _assure_expression: $ => choice(
+            $.assure_call_expression,
+            $.binary_assure_expression,
+            $.assure_group,
+            $._expression,
+        ),
+
+        assure_call_expression: $ => seq(field('call', $.call), '->', field('result', $._expression)),
+
+        binary_assure_expression: $ => choice(
+            // Precedence weakest to strongest
+            prec.left(1, seq(field('left', $._assure_expression), field('operator', 'and'), field('right', $._assure_expression))),
+            prec.left(2, seq(field('left', $._assure_expression), field('operator', 'or'), field('right', $._assure_expression))),
+        ),
+
+        assure_group: $ => seq('(', field('expression', $._assure_expression), ')'),
     }
 });
+
+function repeatDelimited(element, delimiter) {
+    return optional(seq(element, repeat(seq(delimiter, element))));
+}
+
+function repeat1Delimited(element, delimiter) {
+    return seq(element, repeat(seq(delimiter, element)));
+}
